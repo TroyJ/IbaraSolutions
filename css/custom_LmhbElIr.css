@@ -43,14 +43,3 @@
   background: #fff;
   color: #303030;
 }
-
-/* Panel Bottom 01 */
-.panel.bottom{
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
-.app-panel-bottom-links{
-  letter-spacing: 0.12em;
-}
-.app-panel-bottom-links a:hover{
-  color:#202020 !important;
-}
