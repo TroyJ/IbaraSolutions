@@ -20,6 +20,30 @@
     line-height:30px;
 }
 
+/* Example Slider pill tabs (#2) */
+.pill.controller {
+  font-size: 0;
+  border: 1px solid;
+  display: inline-block;
+  border-radius: 6px;
+}
+.pill.controller li {
+  padding: 10px 20px;
+  display: inline-block;
+  border: 1px solid #fff;
+  font-size: initial;
+}
+.pill.controller li:first-child {
+  border-radius: 4px 0 0 4px;
+}
+.pill.controller li:last-child {
+  border-radius: 0 4px 4px 0;
+}
+.pill.controller li.selected {
+  background: #fff;
+  color: #303030;
+}
+
 /* Panel Bottom 01 */
 .panel.bottom{
   border-top: 1px solid rgba(0, 0, 0, 0.1);

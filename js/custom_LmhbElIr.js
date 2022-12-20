@@ -10,3 +10,10 @@ $(document).ready(function(){
     $(window).scroll(panelTopBg);
     panelTopBg();
   });
+
+/* Example Contact Form Redirect (#3) */
+
+  // This script will redirect your visitors on the successful form submit
+  $(document).ajaxSuccess(function() {
+    window.location.href = 'https://designmodo.com/affiliate/';
+  });
