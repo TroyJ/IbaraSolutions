@@ -12,7 +12,7 @@
     <meta name="og:description" content="KBTJ Consulting is a software development and IT consulting firm that specializes in mobile app and website development." />
     <meta name="twitter:description" content="KBTJ Consulting is a software development and IT consulting firm that specializes in mobile app and website development." />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link href="css/slides-customized.min.css?p=xM7zUqSW&rnd=779965" rel="stylesheet" type="text/css" id="js-slides-css">
+    <link href="css/slides-customized.min.css?p=xM7zUqSW&rnd=579821" rel="stylesheet" type="text/css" id="js-slides-css">
 
     
     <!-- Fonts and Material Icons -->
@@ -245,7 +245,7 @@ p.smaller{letter-spacing: 0.012em;}
             <svg height="150" class="wide ae-1 fromCenter"><use href="#logo"></use></svg>
           </div>
           <div class="fix-6-12"> 
-            <h3 class="large cropBottom ae-2"><span class="opacity-8">Transform your business with cutting-edge web and mobile technology.</span></h3>
+            <h3 class="large cropBottom ae-2"><span class="opacity-8">Transform your business with cutting-edge web and mobile&nbsp;technology</span></h3>
           </div>
         </div>
           
@@ -313,11 +313,11 @@ p.smaller{letter-spacing: 0.012em;}
           <h1 class="margin-bottom-2 ae-1">Contact us</h1>
           <p class="larger light ae-2"><span class="opacity-8">If you're interested in learning more about how KBTJ Consulting can help your business, we'd love to hear from you!<br>Email <b><a href= "mailto:info@KBTJConsulting">info@KBTJConsulting</a></b><br>or we can get in touch with you...</span></p>
           <div class="margin-top-3">
-            <form class="slides-form" action="#" method="get" autocomplete="off">
-              <input type="email" class="input-12 rounded ae-5 fromLeft" name="email" placeholder="Email address"/>
+            <form class="slides-form" id="my-form" action="https://formspree.io/f/xjvdbovd" method="POST" autocomplete="off">
+              <input type="email" class="input-12 rounded ae-5 fromLeft" name="email" placeholder="Your email address"/>
               <button type="submit" class="button blue rounded ae-7 fromCenter" name="button">Get Started</button>
             </form>
-            
+            <p id="my-form-status" class="larger light ae-2"><span class="opacity-8"></span></p>
           </div>
         </div>
         
@@ -326,6 +326,38 @@ p.smaller{letter-spacing: 0.012em;}
   </div>
   <div class="background" style="background-image:url(assets/img/background/img-12.jpg)"></div>
 </section>
+<script>
+    var form = document.getElementById("my-form");
+    
+    async function handleSubmit(event) {
+      event.preventDefault();
+      var status = document.getElementById("my-form-status");
+      var data = new FormData(event.target);
+      fetch(event.target.action, {
+        method: form.method,
+        body: data,
+        headers: {
+            'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          status.innerHTML = "Thanks for your submission, we will be in touch!";
+          form.reset()
+        } else {
+          response.json().then(data => {
+            if (Object.hasOwn(data, 'errors')) {
+              status.innerHTML = "Sorry: "+data["errors"].map(error => error["message"]).join(", ")+"."
+            } else {
+              status.innerHTML = "Oops! There was a problem submitting your form"
+            }
+          })
+        }
+      }).catch(error => {
+        status.innerHTML = "Oops! There was a problem submitting your form"
+      });
+    }
+    form.addEventListener("submit", handleSubmit)
+</script>
 <!-- Panel Bottom 09 (#10000) -->
 <!-- Bottom Panel 09 -->
 <nav class="panel bottom">
